@@ -315,9 +315,9 @@ static void do_action_load_poe_from_uci(void){
 	if(!ctx)
 		die_and_mess(-22, "Can't alloc UCI context: %s", strerror(errno));
 	ctx->flags &= ~UCI_FLAG_STRICT;
-	if(uci_load(ctx, "network", &p) != UCI_OK){
+	if(uci_load(ctx, "system", &p) != UCI_OK){
 		uci_free_context(ctx);
-		die_and_mess(-22, "Can't load UCI->network");
+		die_and_mess(-22, "Can't load UCI->system");
 	}
 	uci_foreach_element(&p->sections, e){
 		s = uci_to_section(e);
